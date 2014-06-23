@@ -12,6 +12,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <toolbar key="tableFooterView" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="HyP-Xf-ZDF">
+                            <rect key="frame" x="0.0" y="166" width="320" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                            <items>
+                                <barButtonItem systemItem="refresh" id="tkQ-oS-A8N">
+                                    <connections>
+                                        <action selector="refreshPressed:" destination="MsS-p2-FrY" id="Bke-Hi-OmL"/>
+                                    </connections>
+                                </barButtonItem>
+                                <barButtonItem systemItem="search" id="3bd-Ty-IVL">
+                                    <connections>
+                                        <action selector="searchPressed:" destination="MsS-p2-FrY" id="sHa-xJ-hK5"/>
+                                    </connections>
+                                </barButtonItem>
+                            </items>
+                        </toolbar>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" restorationIdentifier="showCell" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="showCell" rowHeight="80" id="Pxn-nq-h2R" customClass="TableViewCell">
                                 <rect key="frame" x="0.0" y="86" width="320" height="80"/>

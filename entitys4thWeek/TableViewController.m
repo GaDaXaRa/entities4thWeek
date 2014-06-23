@@ -57,6 +57,20 @@ static NSString *const savedShowsFileName = @"shows.txt";
 #pragma mark -
 #pragma mark Actions
 
+- (IBAction)searchPressed:(id)sender {
+    [self highLightRepeated];
+    [self.tableView reloadData];
+}
+
+- (IBAction)refreshPressed:(id)sender {
+    NSOrderedSet *refreshedSet = [[NSOrderedSet alloc] initWithArray:self.showsArray copyItems:YES];
+    
+    self.showsArray = [refreshedSet array];
+    [self backRowsToWhiteColor];
+    
+    [self.tableView reloadData];
+}
+
 - (IBAction)addShowPressed:(id)sender {
     [self addShow:[self generateRandomShow]];
     
@@ -95,11 +109,33 @@ static NSString *const savedShowsFileName = @"shows.txt";
     TVShow *copiedShow = originShow.copy;
     
     [self addShow:copiedShow];
+    
     [self.tableView reloadData];
 }
 
 #pragma mark -
 #pragma mark Helping Methods
+
+- (void)highLightRepeated {
+    for (int i = 0; i < [self.showsArray count]; i++) {
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:i inSection:0];
+        NSMutableArray *mutableArray = self.showsArray.mutableCopy;
+        TVShow *show = [mutableArray objectAtIndex:i];
+        [mutableArray removeObjectAtIndex:i];
+        
+        if ([mutableArray containsObject:show]) {
+            TableViewCell *cell = (TableViewCell *)[self.tableView cellForRowAtIndexPath:indexPath];
+            cell.backgroundColor = [UIColor greenColor];
+        }
+    }
+}
+
+- (void)backRowsToWhiteColor {
+    for (int i = 0; i < [self.showsArray count]; i ++) {
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:i inSection:0];
+        [self.tableView cellForRowAtIndexPath:indexPath].backgroundColor = [UIColor whiteColor];
+    }
+}
 
 - (void)loadShows {
     self.showsArray = [NSKeyedUnarchiver unarchiveObjectWithFile:[self archivePath]];

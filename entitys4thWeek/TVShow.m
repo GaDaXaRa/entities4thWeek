@@ -18,6 +18,9 @@ NSString *const ratingField = @"rating";
 
 @implementation TVShow
 
+#pragma mark -
+#pragma mark Equality
+
 - (BOOL)isEqualToTVShow:(TVShow *)show {
     return [self.showId isEqualToString:show.showId];
 }
