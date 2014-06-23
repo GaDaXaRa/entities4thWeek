@@ -21,6 +21,9 @@
 		3F1F53FB19581B8D00780180 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F1F53DD19581B8D00780180 /* UIKit.framework */; };
 		3F1F540319581B8D00780180 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3F1F540119581B8D00780180 /* InfoPlist.strings */; };
 		3F1F540519581B8D00780180 /* entitys4thWeekTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F1F540419581B8D00780180 /* entitys4thWeekTests.m */; };
+		3F1F541019581BB000780180 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F1F540F19581BB000780180 /* TableViewController.m */; };
+		3F1F541419581C3500780180 /* TVShow.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F1F541319581C3500780180 /* TVShow.m */; };
+		3F1F541719581E3C00780180 /* TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F1F541619581E3C00780180 /* TableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +56,12 @@
 		3F1F540019581B8D00780180 /* entitys4thWeekTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "entitys4thWeekTests-Info.plist"; sourceTree = "<group>"; };
 		3F1F540219581B8D00780180 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		3F1F540419581B8D00780180 /* entitys4thWeekTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = entitys4thWeekTests.m; sourceTree = "<group>"; };
+		3F1F540E19581BB000780180 /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
+		3F1F540F19581BB000780180 /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
+		3F1F541219581C3500780180 /* TVShow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TVShow.h; sourceTree = "<group>"; };
+		3F1F541319581C3500780180 /* TVShow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TVShow.m; sourceTree = "<group>"; };
+		3F1F541519581E3C00780180 /* TableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewCell.h; sourceTree = "<group>"; };
+		3F1F541619581E3C00780180 /* TableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +121,7 @@
 		3F1F53DF19581B8D00780180 /* entitys4thWeek */ = {
 			isa = PBXGroup;
 			children = (
+				3F1F541119581C1A00780180 /* Model */,
 				3F1F53E819581B8D00780180 /* AppDelegate.h */,
 				3F1F53E919581B8D00780180 /* AppDelegate.m */,
 				3F1F53EB19581B8D00780180 /* Main.storyboard */,
@@ -119,6 +129,10 @@
 				3F1F53EF19581B8D00780180 /* ViewController.m */,
 				3F1F53F119581B8D00780180 /* Images.xcassets */,
 				3F1F53E019581B8D00780180 /* Supporting Files */,
+				3F1F540E19581BB000780180 /* TableViewController.h */,
+				3F1F540F19581BB000780180 /* TableViewController.m */,
+				3F1F541519581E3C00780180 /* TableViewCell.h */,
+				3F1F541619581E3C00780180 /* TableViewCell.m */,
 			);
 			path = entitys4thWeek;
 			sourceTree = "<group>";
@@ -150,6 +164,15 @@
 				3F1F540119581B8D00780180 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3F1F541119581C1A00780180 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3F1F541219581C3500780180 /* TVShow.h */,
+				3F1F541319581C3500780180 /* TVShow.m */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -250,8 +273,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				3F1F53F019581B8D00780180 /* ViewController.m in Sources */,
+				3F1F541719581E3C00780180 /* TableViewCell.m in Sources */,
 				3F1F53EA19581B8D00780180 /* AppDelegate.m in Sources */,
 				3F1F53E619581B8D00780180 /* main.m in Sources */,
+				3F1F541019581BB000780180 /* TableViewController.m in Sources */,
+				3F1F541419581C3500780180 /* TVShow.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
