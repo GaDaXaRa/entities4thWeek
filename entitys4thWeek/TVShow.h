@@ -26,6 +26,8 @@ FOUNDATION_EXPORT NSString *const ratingField;
 @property (copy, nonatomic) NSString *image;
 @property (assign, nonatomic) CGFloat rating;
 
+- (BOOL)isEqualToTVShow:(TVShow *)show;
+
 @end
 
 @interface TVShow(NSCoding)<NSCoding>

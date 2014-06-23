@@ -118,6 +118,9 @@ static NSString *const savedShowsFileName = @"shows.txt";
     return [documentsFolder stringByAppendingPathComponent:savedShowsFileName];
 }
 
+#pragma mark -
+#pragma mark Random Methods (FOR FORWARD DELETING)
+
 - (TVShow *)generateRandomShow {
     TVShow *show = [[TVShow alloc] init];
     

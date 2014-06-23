@@ -18,6 +18,26 @@ NSString *const ratingField = @"rating";
 
 @implementation TVShow
 
+- (BOOL)isEqualToTVShow:(TVShow *)show {
+    return [self.showId isEqualToString:show.showId];
+}
+
+- (BOOL)isEqual:(id)object {
+    if (self == object) {
+        return YES;
+    }
+    
+    if (![object isKindOfClass:[TVShow class]]) {
+        return NO;
+    }
+    
+    return [self isEqualToTVShow:object];
+}
+
+- (NSUInteger)hash {
+    return [_showId hash];
+}
+
 @end
 
 @implementation TVShow(NSCoding)
