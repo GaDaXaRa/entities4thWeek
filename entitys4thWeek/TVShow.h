@@ -8,22 +8,23 @@
 
 #import <Foundation/Foundation.h>
 
+FOUNDATION_EXPORT NSString *const showIdField;
 FOUNDATION_EXPORT NSString *const nameField;
 FOUNDATION_EXPORT NSString *const summaryField;
 FOUNDATION_EXPORT NSString *const creatorField;
 FOUNDATION_EXPORT NSString *const castField;
-FOUNDATION_EXPORT NSString *const ratingField;
 FOUNDATION_EXPORT NSString *const imageField;
+FOUNDATION_EXPORT NSString *const ratingField;
 
 @interface TVShow : NSObject
 
 @property (copy, nonatomic) NSString *showId;
 @property (copy, nonatomic) NSString *name;
 @property (copy, nonatomic) NSString *summary;
-@property (assign, nonatomic) CGFloat rating;
 @property (copy, nonatomic) NSString *creator;
 @property (copy, nonatomic) NSArray *cast;
 @property (copy, nonatomic) NSString *image;
+@property (assign, nonatomic) CGFloat rating;
 
 @end
 

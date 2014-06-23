@@ -8,15 +8,15 @@
 
 #import "TVShow.h"
 
+NSString *const showIdField = @"showId";
 NSString *const nameField = @"name";
 NSString *const summaryField = @"summary";
 NSString *const creatorField = @"creator";
 NSString *const castField = @"cast";
-NSString *const ratingField = @"rating";
 NSString *const imageField = @"image";
+NSString *const ratingField = @"rating";
 
 @implementation TVShow
-
 
 @end
 
@@ -25,7 +25,8 @@ NSString *const imageField = @"image";
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super init];
     
-    if (show) {
+    if (self) {
+        self.showId = [aDecoder decodeObjectForKey:showIdField];
         self.name = [aDecoder decodeObjectForKey:nameField];
         self.summary = [aDecoder decodeObjectForKey:summaryField];
         self.creator = [aDecoder decodeObjectForKey:creatorField];
@@ -38,12 +39,13 @@ NSString *const imageField = @"image";
 }
 
 - (void)encodeWithCoder:(NSCoder *)aCoder {
-    [aCoder encodeObject:self.name forKey:nameField];
-    [aCoder encodeObject:self.summary forKey:summaryField];
-    [aCoder encodeObject:self.creator forKey:creatorField];
-    [aCoder encodeObject:self.cast forKey:castField];
-    [aCoder encodeObject:self.image forKey:imageField];
-    [aCoder encodeFloat:self.rating forKey:ratingField];
+    if (self.showId) [aCoder encodeObject:self.showId forKey:showIdField];
+    if (self.name) [aCoder encodeObject:self.name forKey:nameField];
+    if (self.summary) [aCoder encodeObject:self.summary forKey:summaryField];
+    if (self.creator) [aCoder encodeObject:self.creator forKey:creatorField];
+    if (self.cast) [aCoder encodeObject:self.cast forKey:castField];
+    if (self.image) [aCoder encodeObject:self.image forKey:imageField];
+    if (self.rating) [aCoder encodeFloat:self.rating forKey:ratingField];
 }
 
 @end
