@@ -10,6 +10,8 @@
 #import "TVShow.h"
 #import "TableViewCell.h"
 
+static NSString *const savedShowsFileName = @"shows.txt";
+
 @interface TableViewController ()
 @property (strong, nonatomic) NSArray *showsArray;
 @end
@@ -46,11 +48,6 @@
     [self loadShows];
 }
 
-- (void)loadShows {
-    self.showsArray = [NSKeyedUnarchiver unarchiveObjectWithFile:@"/showsArray"];
-    [self.tableView reloadData];
-}
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -61,14 +58,13 @@
 #pragma mark Actions
 
 - (IBAction)addShowPressed:(id)sender {
-    [self addShowToShowsArray:[self generateRandomShow]];
+    [self addShow:[self generateRandomShow]];
     
     [self.tableView reloadData];
 }
 
 - (IBAction)savePressed:(id)sender {
-    [NSKeyedArchiver archiveRootObject:self.showsArray toFile:@"/showsArray"];
-    
+    [NSKeyedArchiver archiveRootObject:self.showsArray toFile:[self archivePath]];
 }
 
 #pragma mark - Table view data source
@@ -98,17 +94,28 @@
     TVShow *originShow = [self.showsArray objectAtIndex:indexPath.row];
     TVShow *copiedShow = originShow.copy;
     
-    [self addShowToShowsArray:copiedShow];
+    [self addShow:copiedShow];
     [self.tableView reloadData];
 }
 
 #pragma mark -
 #pragma mark Helping Methods
 
-- (void)addShowToShowsArray:(TVShow *)show {
+- (void)loadShows {
+    self.showsArray = [NSKeyedUnarchiver unarchiveObjectWithFile:[self archivePath]];
+    [self.tableView reloadData];
+}
+
+- (void)addShow:(TVShow *)show {
     NSMutableArray *showsMutableCopy = [self.showsArray mutableCopy];
     [showsMutableCopy addObject:show];
     self.showsArray = showsMutableCopy.copy;
+}
+
+- (NSString *)archivePath {
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+    NSString *documentsFolder = [paths firstObject];
+    return [documentsFolder stringByAppendingPathComponent:savedShowsFileName];
 }
 
 - (TVShow *)generateRandomShow {
@@ -117,7 +124,7 @@
     show.name = [self genRandStringLength:7];
     show.showId = [self genRandStringLength:7];
     show.summary = [self genRandStringLength:20];
-    show.rating = arc4random()/10.0f;
+    show.rating = arc4random() / 10.0f;
     show.creator = [self genRandStringLength:7];
     
     return  show;

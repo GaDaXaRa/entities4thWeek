@@ -17,19 +17,24 @@ NSString *const imageField = @"image";
 
 @implementation TVShow
 
+
+@end
+
+@implementation TVShow(NSCoding)
+
 - (id)initWithCoder:(NSCoder *)aDecoder {
-    TVShow *show = [[TVShow alloc] init];
+    self = [super init];
     
     if (show) {
-        show.name = [aDecoder decodeObjectForKey:nameField];
-        show.summary = [aDecoder decodeObjectForKey:summaryField];
-        show.creator = [aDecoder decodeObjectForKey:creatorField];
-        show.cast = [aDecoder decodeObjectForKey:castField];
-        show.image = [aDecoder decodeObjectForKey:imageField];
-        show.rating = [aDecoder decodeFloatForKey:ratingField];
+        self.name = [aDecoder decodeObjectForKey:nameField];
+        self.summary = [aDecoder decodeObjectForKey:summaryField];
+        self.creator = [aDecoder decodeObjectForKey:creatorField];
+        self.cast = [aDecoder decodeObjectForKey:castField];
+        self.image = [aDecoder decodeObjectForKey:imageField];
+        self.rating = [aDecoder decodeFloatForKey:ratingField];
     }
     
-    return show;
+    return self;
 }
 
 - (void)encodeWithCoder:(NSCoder *)aCoder {
@@ -40,6 +45,10 @@ NSString *const imageField = @"image";
     [aCoder encodeObject:self.image forKey:imageField];
     [aCoder encodeFloat:self.rating forKey:ratingField];
 }
+
+@end
+
+@implementation TVShow(NSCopying)
 
 - (id)copyWithZone:(NSZone *)zone {
     TVShow *show = [[TVShow allocWithZone:zone] init];

@@ -15,7 +15,7 @@ FOUNDATION_EXPORT NSString *const castField;
 FOUNDATION_EXPORT NSString *const ratingField;
 FOUNDATION_EXPORT NSString *const imageField;
 
-@interface TVShow : NSObject<NSCopying, NSCoding>
+@interface TVShow : NSObject
 
 @property (copy, nonatomic) NSString *showId;
 @property (copy, nonatomic) NSString *name;
@@ -24,5 +24,13 @@ FOUNDATION_EXPORT NSString *const imageField;
 @property (copy, nonatomic) NSString *creator;
 @property (copy, nonatomic) NSArray *cast;
 @property (copy, nonatomic) NSString *image;
+
+@end
+
+@interface TVShow(NSCoding)<NSCoding>
+
+@end
+
+@interface TVShow(NSCopying)<NSCopying>
 
 @end
