@@ -32,7 +32,9 @@ NSString *const ratingField = @"rating";
         self.creator = [aDecoder decodeObjectForKey:creatorField];
         self.cast = [aDecoder decodeObjectForKey:castField];
         self.image = [aDecoder decodeObjectForKey:imageField];
-        self.rating = [aDecoder decodeFloatForKey:ratingField];
+        
+        NSNumber *ratingNumber = [aDecoder decodeObjectForKey:ratingField];
+        self.rating = CGFLOAT_IS_DOUBLE ? [ratingNumber doubleValue] : [ratingNumber floatValue];
     }
     
     return self;
@@ -45,7 +47,10 @@ NSString *const ratingField = @"rating";
     if (self.creator) [aCoder encodeObject:self.creator forKey:creatorField];
     if (self.cast) [aCoder encodeObject:self.cast forKey:castField];
     if (self.image) [aCoder encodeObject:self.image forKey:imageField];
-    if (self.rating) [aCoder encodeFloat:self.rating forKey:ratingField];
+    
+    NSNumber *ratingNumber = CGFLOAT_IS_DOUBLE ? [NSNumber numberWithDouble:self.rating] : [NSNumber numberWithFloat:self.rating];
+    
+    [aCoder encodeObject:ratingNumber forKey:ratingField];
 }
 
 @end
